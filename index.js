@@ -1,29 +1,19 @@
-import Jimp from 'jimp';
+const fs = require('fs');
+const Jimp = require('jimp');
 
-const font = await Jimp.loadFont(
-  'https://i.pinimg.com/originals/2a/02/06/2a02060f84e3eb0a900386ed87788fa0.jpg',
-);
-
-const createMeme = () => {
-  try {
-    if (!fs.existsSync('./meme_folder')) {
-      fs.mkdirSync('./meme_folder');
-    }
-  } catch (err) {
-    console.error(err);
+try {
+  if (!fs.existsSync('./YourOwnMeme')) {
+    fs.mkdirSync('./YourOwnMeme');
   }
-
-  image.print(
-    font,
-    x,
-    y,
-    {
-      text: 'Hello world!',
-      alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-      alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
-    },
-    maxWidth,
-    maxHeight,
+} catch (err) {
+  console.error(err);
+}
+const createMeme = async () => {
+  const image = await Jimp.read(
+    'https://i.pinimg.com/originals/2a/02/06/2a02060f84e3eb0a900386ed87788fa0.jpg',
   );
+  const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
+  const print = await image.print(font, 0, 0, 'Hello Meme');
+  image.write('./YourOwnMeme/YourImage.png');
 };
 createMeme();
