@@ -22,8 +22,8 @@ const createMeme = async () => {
 
   const image = await Jimp.read(url);
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-  const print = await image.print(font, 510, 0, top);
-  const print2 = await image.print(font, 0, 350, bottom);
+  const print = await image.print(font, 410, 200, top);
+  const print2 = await image.print(font, 410, 500, bottom);
 
   image.write('./YourOwnMeme/YourImage.png');
 };
