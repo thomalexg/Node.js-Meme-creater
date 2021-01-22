@@ -3,6 +3,8 @@ const Jimp = require('jimp');
 
 // https://i.pinimg.com/originals/2a/02/06/2a02060f84e3eb0a900386ed87788fa0.jpg
 
+// https://www.bandadda.com/wp-content/uploads/2019/06/blank-meme-templates-drake-posting-template-by-josael281999-on-deviantart.jpg
+
 const createMeme = async () => {
   const url = process.argv[2];
 
